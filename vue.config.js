@@ -4,7 +4,7 @@ module.exports={
   devServer: {
       proxy: {
         "^/api/": {
-          target: "http://calculator",
+          target: "http://backend",
           secure: false,
           pathRewrite: {
             "/api/*": "/"
