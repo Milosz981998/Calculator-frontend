@@ -1,7 +1,7 @@
 <template>
   <div class="calculator">
     <div class="calculator__container">
-        <div class="display"><input class="display-numbers" id="display" :value="current||'0'" disabled="disabled" /></div>
+        <div class="display"><input class="display-numbers" id="display" :value="current" disabled="disabled" /></div>
         <div class="keyboard">
             <div class="keyboard-row">
                 <button class="keyboard-key keyboard-key--gray" @click="clearDisplay()">AC</button>
@@ -42,7 +42,7 @@
 export default {
     data() {
         return {
-            current: '',
+            current: '0',
             previous: null,
             sign: null,
             clickedSign: false
@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         clearDisplay() {
-            this.current = ''
+            this.current = '0'
             this.previous = null
             this.sign = null
             this.clickedSign = false
@@ -68,8 +68,8 @@ export default {
                 this.current = '0.'
                 this.clickedSign = false
             }
-            if (this.current.indexOf('.') === -1) {
-                this.current += '0.'
+            if (this.current.indexOf('.') === -1 && !!this.current) {
+                this.current += '.'
             }
         },
         changeSign() {
